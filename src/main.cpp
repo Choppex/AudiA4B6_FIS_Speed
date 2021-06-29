@@ -72,8 +72,8 @@ void loop()
             uv = speedMessage.data[2];
             speed = ((uv << 8) + lv - 1) / 190;
             splitDigits();
-            //sendMessage();
         }
     }
+    sendMessage();
     delay(10);
 }
