@@ -53,6 +53,14 @@ void sendMessage()
     mcp2515.sendMessage(&secondRowMessage);
 }
 
+void clear(can_frame &message)
+{
+    for (int i = 0; i < 8; i++)
+    {
+        message.data[i] = SPACE;
+    }
+}
+
 void setup()
 {
     mcp2515.reset();
@@ -71,6 +79,7 @@ void loop()
             lv = speedMessage.data[1];
             uv = speedMessage.data[2];
             speed = ((uv << 8) + lv - 1) / 190;
+            clear(firstRowMessage);
             splitDigits();
         }
     }
